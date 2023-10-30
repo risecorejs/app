@@ -44,7 +44,7 @@ module.exports = (config, additionalServerFlags) => () => {
     ...serverFlags.map((item) => {
       const line = [`⚐  ${item.label} enabled: ${getStyledTextYesNo(item.enabled)}`]
 
-      if (item.enabled) {
+      if (item.comment) {
         line.push(chalk.gray(`(${item.comment})`))
       }
 
