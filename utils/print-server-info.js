@@ -1,6 +1,6 @@
 const chalk = require('chalk')
 
-module.exports = (config) => () => {
+module.exports = (config, additionalServerFlags) => () => {
   const {
     envMode,
     app: { name },
@@ -10,6 +10,26 @@ module.exports = (config) => () => {
   const readyInMs = (process.uptime() * 1000).toFixed(2)
   const isProduction = envMode === 'production'
   const getStyledTextYesNo = (val) => (val ? chalk.green('Yes') : chalk.red('No'))
+
+  const serverFlags = [
+    {
+      label: 'Logger',
+      enabled: logger,
+      comment: `format: ${logger.format}`
+    },
+    {
+      label: 'CORS',
+      enabled: cors
+    },
+    {
+      label: 'Rate Limiting',
+      enabled: rateLimit
+    }
+  ]
+
+  if (additionalServerFlags) {
+    serverFlags.push(...additionalServerFlags)
+  }
 
   const lines = [
     '',
@@ -21,11 +41,15 @@ module.exports = (config) => () => {
     `${chalk.cyan(`^  Host:`)} ${host}`,
     `${chalk.cyan(`$  Port:`)} ${port}`,
     '',
-    chalk.magenta(
-      `⚐  Logger enabled: ${getStyledTextYesNo(logger) + (logger ? chalk.gray(` (format: ${logger.format})`) : '')}`
-    ),
-    chalk.magenta(`⚐  CORS enabled: ${getStyledTextYesNo(cors)}`),
-    chalk.magenta(`⚐  Rate Limiting enabled: ${getStyledTextYesNo(rateLimit)}`),
+    ...serverFlags.map((item) => {
+      const line = [`⚐  ${item.label} enabled: ${getStyledTextYesNo(item.enabled)}`]
+
+      if (item.enabled) {
+        line.push(chalk.gray(`(${item.comment})`))
+      }
+
+      return chalk.magenta(line.join(' '))
+    }),
     '',
     chalk.red('✘  Press Ctrl + C to exit.'),
     ''
