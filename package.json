@@ -1,0 +1,23 @@
+{
+  "name": "@risecorejs/app",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/risecorejs/app.git"
+  },
+  "author": "Risecorejs <risecorejs@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/risecorejs/app/issues"
+  },
+  "homepage": "https://github.com/risecorejs/app#readme",
+  "dependencies": {
+    "chalk": "^5.3.0"
+  },
+  "devDependencies": {
+    "prettier": "^3.0.3"
+  }
+}
