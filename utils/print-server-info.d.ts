@@ -1,4 +1,6 @@
 interface Config {
+  [key: string]: any
+
   envMode: string
   app: {
     name: string
@@ -6,7 +8,6 @@ interface Config {
   server: {
     host: string
     port: number
-
     logger: any
     cors: any
     rateLimit: any
