@@ -35,14 +35,14 @@ module.exports = (config, additionalServerFlags) => () => {
     '',
     `${chalk.yellow(chalk.bold(`${name}`))} ready in ${chalk.bold(readyInMs)} ms`,
     '',
-    `⚙  Environment: ${chalk[isProduction ? 'red' : 'green'](envMode)}`,
-    `${chalk.green('➜')}  Local URL: http://localhost:${port}`,
+    ` ⚙  Environment: ${chalk[isProduction ? 'red' : 'green'](envMode)}`,
+    ` ${chalk.green('➜')}  Local URL: http://localhost:${port}`,
     '',
-    `${chalk.cyan(`^  Host:`)} ${host}`,
-    `${chalk.cyan(`$  Port:`)} ${port}`,
+    ` ${chalk.cyan(`^  Host:`)} ${host}`,
+    ` ${chalk.cyan(`$  Port:`)} ${port}`,
     '',
     ...serverFlags.map((item) => {
-      const line = [`⚐  ${item.label} enabled: ${getStyledTextYesNo(item.enabled)}`]
+      const line = [` ⚐  ${item.label} enabled: ${getStyledTextYesNo(item.enabled)}`]
 
       if (item.comment) {
         line.push(chalk.gray(`(${item.comment})`))
@@ -51,11 +51,11 @@ module.exports = (config, additionalServerFlags) => () => {
       return chalk.magenta(line.join(' '))
     }),
     '',
-    chalk.red('✘  Press Ctrl + C to exit.'),
+    chalk.red(' ✘  Press Ctrl + C to exit.'),
     ''
   ]
 
   for (const line of lines) {
-    console.log('  ' + line)
+    console.log(line)
   }
 }
