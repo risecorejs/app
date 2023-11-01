@@ -1,3 +1,4 @@
 module.exports = {
-  utils: require('./utils')
+  getModels: require('./lib/get-models'),
+  printServerInfo: require('./lib/print-server-info')
 }

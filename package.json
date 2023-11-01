@@ -15,9 +15,11 @@
   },
   "homepage": "https://github.com/risecorejs/app#readme",
   "dependencies": {
-    "chalk": "4.1.2"
+    "chalk": "4.1.2",
+    "sequelize": "^6.33.0"
   },
   "devDependencies": {
+    "pg": "^8.11.3",
     "prettier": "^3.0.3"
   }
 }
