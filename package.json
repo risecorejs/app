@@ -16,6 +16,7 @@
   "homepage": "https://github.com/risecorejs/app#readme",
   "dependencies": {
     "chalk": "4.1.2",
+    "http-status-codes": "^2.3.0",
     "sequelize": "^6.33.0"
   },
   "devDependencies": {
